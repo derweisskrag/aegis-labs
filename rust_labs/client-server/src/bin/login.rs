@@ -44,6 +44,9 @@ pub struct Claims {
     exp: usize, // expiration
 }
 
+mod repository;
+use repository::user_repository::{find_user_by_username, User};
+
 // CLI
 use clap::Parser;
 

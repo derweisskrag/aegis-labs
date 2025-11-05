@@ -75,8 +75,8 @@ async fn main() {
         .route("/greet", post(greet));
 
 
-    // Run our app with hyper, listening globally on port 3010
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3010").await.unwrap();
+    // Run our app with hyper, listening globally on port 8100
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:8100").await.unwrap();
 
     println!("Serving on 3010 port...");
 
