@@ -1,1 +1,0 @@
-# Windows Server 2022 Standard Tasks
