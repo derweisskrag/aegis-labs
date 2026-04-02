@@ -1,0 +1,32 @@
+digraph FractalEngine {
+    rankdir=LR;
+    node [shape=box, fontname="Courier New", style=rounded, fontsize=12];
+
+    subgraph cluster_logic {
+        label="Python Application";
+        style=rounded;
+        Main [label="main.py\n(Entry Point)"];
+        RecursiveFunc [label="Recursive Engine\n(Fractal Logic)", fillcolor="#e0f7ff", style="rounded,filled"];
+        Main -> RecursiveFunc [label="Initializes"];
+    }
+
+    subgraph cluster_render {
+        label="Graphics Engine";
+        style=rounded;
+        TurtleLib [label="Turtle Graphics\n(Tkinter Wrapper)"];
+        Screen [label="Canvas\n(Visual Output)"];
+        RecursiveFunc -> TurtleLib [label="Draw Commands"];
+        TurtleLib -> Screen [label="Render"];
+    }
+
+    subgraph cluster_build {
+        label="Documentation Pipeline";
+        style=rounded;
+        Pandoc [label="Pandoc\n(Markdown → PDF)"];
+        LaTeX [label="pdfLaTeX\n(Typesetting)"];
+        Markdown [label="Report.md\n(Source)"];
+    }
+
+    Screen -> Markdown [label="Screenshot"];
+    Markdown -> Pandoc -> LaTeX [label="Compile"];
+}

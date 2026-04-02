@@ -1,0 +1,44 @@
+This error usually means that even if virtualization is enabled in your BIOS, the Windows Hypervisor isn't active or the WSL 2 feature isn't fully enabled in your OS.
+
+Before you go back into the BIOS, try these commands in PowerShell (Run as Administrator).
+
+Step 1: Enable WSL and Virtual Machine Platform
+Run this command to ensure the Windows features are active:
+
+PowerShell
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+Step 2: Enable Hyper-V
+Docker Desktop on Windows often requires Hyper-V to be explicitly "on" in the boot configuration. Run this:
+
+PowerShell
+bcdedit /set hypervisorlaunchtype auto
+Step 3: The "Finish Line"
+After running those, you must restart your computer for the changes to take effect.
+
+Once you reboot:
+
+Try opening Docker Desktop again.
+
+If it works, navigate to your project folder in PowerShell.
+
+Run your command:
+
+PowerShell
+docker-compose up --build
+
+
+The "Undo" Commands
+Once you are finished with your Docker project, you can run these in PowerShell (Admin) to toggle the settings back:
+
+Set Hypervisor back to off/manual: bcdedit /set hypervisorlaunchtype off
+
+Disable the Windows Features:
+
+PowerShell
+dism.exe /online /disable-feature /featurename:VirtualMachinePlatform
+dism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux
+A Quick Note on "Breaking" Things
+Turning these on is generally very safe—Windows uses these same features for things like the Windows Sandbox or Core Isolation (security features). The only reason most people toggle them off is if they use older, third-party virtualization software (like very old versions of VirtualBox or VMware) that might conflict with Hyper-V.
+
+Go ahead and do your restart now! I'll be here when you get back. Once you're back up, we can verify the Docker install and run that everglades container to see if the Burmese Python and the Florida Man are playing nice in the database.

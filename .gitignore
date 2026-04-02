@@ -1,3 +1,12 @@
+# Ignore pdf
+**/*.pdf
+**/*.jpeg
+**/*.png
+
+# ignore
+**/*.o
+
+
 # Environmental variables
 .env.*
 .env

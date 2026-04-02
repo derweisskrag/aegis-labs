@@ -1,0 +1,98 @@
+Hypothesis true. DEQUE
+1M: 
+🐍 Python 3.14: 2.4332s
+🦀 Rust WASM:   0.0281s
+⚡ Zig WASM:    0.0066s
+
+--- Final Results ---
+Rust is 86.7x faster than Python
+Zig is 367.1x faster than Python
+
+this is for 1M iterations (2 loops = 2M, but shows results at least, unlike 100M). Also, according to AI, the difference grows HUGE with every 10 ** N, N > 6.
+
+10M:
+
+🐍 Python 3.14: 22.6130s
+🦀 Rust WASM:   0.0553s
+⚡ Zig WASM:    0.0689s
+
+--- Final Results ---
+Rust is 408.6x faster than Python
+Zig is 328.3x faster than Python
+
+
+100M:
+
+at 100M, taking out Zig, cuz it couldnt solo:
+
+🐍 Python 3.14: 230.6208s
+🦀 Rust WASM:   0.5075s
+
+--- Final Results ---
+Rust is 454.4x faster than Python
+
+MY QUEUE (O(N ** 2))
+
+100K ITERATIONS (*2)
+$ py main.py
+🐍 Python 3.14: 1.2943s
+🦀 Rust WASM:   0.0007s
+⚡ Zig WASM:    0.0008s
+
+--- Final Results ---
+Rust is 1781.6x faster than Python
+Zig is 1613.1x faster than Python
+
+1M ITERATIONS (*2)
+
+$ py main.py
+🐍 Python 3.14: 450.1408s
+🦀 Rust WASM:   0.0049s
+⚡ Zig WASM:    0.0058s
+
+--- Final Results ---
+Rust is 91110.6x faster than Python
+Zig is 77242.9x faster than Python
+
+
+thank you Python!
+
+MY QUEUE LINKED LIST (DOUBLY LINKED LIST)
+
+ITERATIONS = 100K (*2)
+
+$ py main.py
+🐍 Python 3.14: 0.2160s
+🦀 Rust WASM:   0.0008s
+⚡ Zig WASM:    0.0008s
+
+--- Final Results ---
+Rust is 279.9x faster than Python
+Zig is 255.8x faster than Python
+
+fuk.. its over
+
+AND THIS IS FOR 1M
+
+$ py main.py
+🐍 Python 3.14: 2.1887s
+🦀 Rust WASM:   0.0062s
+⚡ Zig WASM:    0.0061s
+
+--- Final Results ---
+Rust is 351.4x faster than Python
+Zig is 361.3x faster than Python
+
+LAST BENCHMARK: 10M 
+
+$ py main.py
+🐍 Python 3.14 (DoublyLinkedList Queue): 22.2135s
+🐍 Python 3.14 (DEQUE): 22.3000s
+🦀 Rust WASM:   0.0556s
+⚡ Zig WASM:    0.0695s
+
+--- Final Results ---
+Rust is 399.6x faster than Python Queue by DSA_KUUKING
+Zig is 319.6x faster than Python Queue by DSA_KUUKING
+Rust is 401.2x faster than Python DEQUE
+Zig is 320.9x faster than Python DEQUE

@@ -1,0 +1,12 @@
+[package]
+name = "dsa_wasm"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "dsa_native"
+crate-type = ["cdylib"] # This generates the .dllM
+
+[dependencies]
+wasm-bindgen = "0.2"
+lazy_static = "1.4"

@@ -1,0 +1,12 @@
+[package]
+name = "try_postgres_docker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sqlx = { version = "0.7", features = ["runtime-tokio", "tls-rustls", "postgres", "macros"] }
+tokio = { version = "1", features = ["full"] }
+
+[[bin]]
+name = "everglades"
+path = "src/main.rs"
