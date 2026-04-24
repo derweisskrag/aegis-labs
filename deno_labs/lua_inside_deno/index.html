@@ -1,0 +1,5 @@
+<script type="module">
+  const result = await fetch("/lua?code=print('Hello Lua')");
+  const text = await result.text();
+  document.body.innerHTML = text;
+</script>
