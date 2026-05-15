@@ -51,6 +51,20 @@ const LinkedList = struct {
         std.debug.print("\n", .{});
     }
 
+    /// Reverse the LinkedList FOR GOOD
+    pub fn reverse(self: *LinkedList) void {
+        var current = self.head;
+        var prev: ?*Node = null;
+        while (current) |node| {
+            const next = node.next;
+            node.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        self.head = prev;
+    }
+
 
     /// Deinitializes the linked list by freeing all allocated nodes.
     /// After calling this, the list becomes empty.
@@ -97,6 +111,25 @@ test "linked list append" {
     const third = second.next.?;
     try std.testing.expectEqual(30, third.value);
 
+    try std.testing.expect(third.next == null);
+}
+
+test "reverse the list" {
+    const gpa = std.testing.allocator;
+    var list = LinkedList.init(gpa);
+    defer list.deinit();
+
+    try list.append(10);
+    try list.append(20);
+    try list.append(30);
+    list.reverse();
+
+    const head = list.head.?;
+    try std.testing.expectEqual(30, head.value);
+    const second = head.next.?;
+    try std.testing.expectEqual(20, second.value);
+    const third = second.next.?;
+    try std.testing.expectEqual(10, third.value);
     try std.testing.expect(third.next == null);
 }
 

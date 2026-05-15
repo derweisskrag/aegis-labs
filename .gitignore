@@ -6,6 +6,9 @@
 # ignore
 **/*.o
 
+# IGNORE C COMPILER
+**/*.exe
+
 
 # Environmental variables
 .env.*
